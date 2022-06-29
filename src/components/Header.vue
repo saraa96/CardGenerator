@@ -1,11 +1,13 @@
 <template>
-<nav class="navbar navbar-custom">
+<nav class="navbar navbar-custom ">
     <!-- <div> Test</div> -->
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="../assets/KSRNR_Logo.png" alt="" width="50" height="50" class="d-inline-block pt-n5">
-<span class="pt-5">{{title}}</span>
-    </a>
+  <div class="container-fluid justify-content-center">
+    <div class="navbar-brand" href="#" >
+<!--<span id="page-title" class="pt-5" >{{title}}</span>-->
+      <img src="../assets/KSRNR_Logo.png" alt="" height="50" class="d-inline-block pt-n5">
+
+
+    </div>
   </div>
 </nav>
 </template>
@@ -24,4 +26,9 @@ export default {
      border-top: 5px solid #a56433;
      color:#fff !important;
 }
+
+#page-title{
+  color: #d1ccbd;
+}
+
 </style>

@@ -19,3 +19,11 @@ export default {
   },
 }
 </script>
+
+
+<style>
+h3{
+  color: #597163;
+}
+
+</style>

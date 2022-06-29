@@ -3,18 +3,30 @@
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   <div id= "app" class="bg">
   <Header :title="title" />
-    <div class="container mt-5 mb-5  shadow-lg bg-white border border-1 rounded">
-      <p class="text-center pt-4">{{title}}</p>
+    <div id="inner-page" class="container mt-5 mb-5  shadow-lg bg-white border border-1 rounded">
+
+
     <div class="row mt-5 mb-5">
-      <div class="col-6 mt-5 mb-5 border-end baige">
+
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6  mt-2 mb-2 orange" >
+        <UserInput
+            :formData="formData"
+            @ChangeFormData="ChangeFormData($event)"
+        />
+      </div>
+
+
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6  mt-2 mb-2 border-end baige">
 <GentreatedCard :empName="formData.empName" />
       </div>
-       <div class="col-6 mt-5 mb-5 orange" >
-<UserInput 
-:formData="formData" 
-@ChangeFormData="ChangeFormData($event)"
-/>
-       </div>
+
+
+
+
+
+
+
     </div>
   </div>
   </div>
@@ -72,4 +84,14 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
 } */
+
+
+
+
+#inner-page{
+  background-color: #d1ccbd !important;
+}
+
+
+
 </style>

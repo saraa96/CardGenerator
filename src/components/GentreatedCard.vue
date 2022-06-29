@@ -1,6 +1,6 @@
 <template>
 <div class="card-area" id="card-area">
-   <img src="../assets/card.jpeg" alt="" width="350" height="450" class="d-inline-block pt-n5">
+   <img src="../assets/card.png" alt="" width="350" height="450" class="d-inline-block pt-n5">
    <div class="empName">
        {{ empName }}
    </div>
@@ -11,6 +11,7 @@
 </template>
 <script>
 import domtoimage from "dom-to-image-more";
+import copyImageToClipboard from "copy-image-clipboard"
 import { saveAs } from 'file-saver';
 import html2canvas from 'html2canvas';
 export default {
@@ -45,8 +46,9 @@ generate_card (){
 //     console.error("oops, something went wrong!", error);
 //   });
 
-domtoimage.toBlob(document.getElementById("card-area")).then(function (blob) {
-  window.saveAs(blob, "my-node.png");
+
+domtoimage.toBlob(document.getElementById("card-area"), {quality: 0.95, width:802, height: 1200}).then(function (blob) {
+  window.saveAs(blob, "my-card.png");
 });
 
 }
@@ -68,8 +70,10 @@ domtoimage.toBlob(document.getElementById("card-area")).then(function (blob) {
 }
 .empName{
 position: absolute;
-  top: 60%;
-  left: 26%;
+  top: 80%;
+  /*left: 35%;*/
+  width: 100%;
+
   color: #fff !important;
   /* transform: translate(-50%, -50%); */
 }
