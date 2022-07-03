@@ -10,8 +10,11 @@
   "dependencies": {
     "copy-image-clipboard": "^2.1.2",
     "core-js": "^3.8.3",
+    "dom-to-image": "^2.6.0",
     "dom-to-image-more": "^2.10.1",
+    "downloadjs": "^1.4.7",
     "file-saver": "^2.0.5",
+    "html-to-image": "^1.9.0",
     "html2canvas": "^1.4.1",
     "vue": "^3.2.13"
   },

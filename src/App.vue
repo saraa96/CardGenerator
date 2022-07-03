@@ -65,8 +65,7 @@ export default {
 
 <style>
 #app {
- 
-  font-family:  'Tajawal', sans-serif;
+  font-family:  'Tajawal', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

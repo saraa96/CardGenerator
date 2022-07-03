@@ -1,5 +1,5 @@
 <template>
-<div class="card-area" id="card-area">
+<div class="card-area" id="card-area" >
    <img src="../assets/card.png" alt="" width="350" height="450" class="d-inline-block pt-n5">
    <div class="empName">
        {{ empName }}
@@ -10,10 +10,14 @@
 </div>
 </template>
 <script>
+// import domtoimage from 'dom-to-image';
+import * as htmlToImage from 'html-to-image';
+import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
 import domtoimage from "dom-to-image-more";
 import copyImageToClipboard from "copy-image-clipboard"
 import { saveAs } from 'file-saver';
 import html2canvas from 'html2canvas';
+// import * from 'downloadjs'
 export default {
   name: 'GentreatedCard',
   props:{
@@ -23,33 +27,32 @@ export default {
 
 
 generate_card (){
-//     console.log("CLIK")
-// var card = html2canvas(document.getElementById("card-area"));
-// card.style.display = "none"
-// document.body.appendChild(card);
-// const img = card.toDataURL("image/png").replace("image/png","image/octet-stream");
-// const a = document.createElement("a");
-// a.setAttribute("download","haj.png");
-// a.setAttribute("href",img);
-// a.click();
+htmlToImage.toJpeg(document.getElementById('card-area'), { quality: 0.95 })
+  .then(function (dataUrl) {
+    var link = document.createElement('a');
+    link.download = 'my-card.jpeg';
+    link.href = dataUrl;
+    link.click();
+  });
 
-// var node = document.getElementById("card-area");
-
-// domtoimage
-//   .toPng(node)
+//     htmlToImage.toPng(document.getElementById('card-area'), { quality: 10})
 //   .then(function (dataUrl) {
-//     var img = new Image();
-//     img.src = dataUrl;
-//     document.body.appendChild(img);
-//   })
-//   .catch(function (error) {
-//     console.error("oops, something went wrong!", error);
+//     download(dataUrl, 'my-node.png');
 //   });
 
 
-domtoimage.toBlob(document.getElementById("card-area"), {quality: 0.95, width:802, height: 1200}).then(function (blob) {
-  window.saveAs(blob, "my-card.png");
-});
+
+
+// domtoimage.toJpeg(document.getElementById("card-area"), { quality: 10})
+//     .then(function (dataUrl) {
+//         var link = document.createElement('a');
+//         link.download = 'my-image-name.jpeg';
+//         link.href = dataUrl;
+//         link.click();
+//     });
+// domtoimage.toBlob(document.getElementById("card-area"), {quality: 0.95, width:802, height: 1200}).then(function (blob) {
+//   window.saveAs(blob, "my-card.png");
+// });
 
 }
 
@@ -64,11 +67,13 @@ domtoimage.toBlob(document.getElementById("card-area"), {quality: 0.95, width:80
 
 </script>
 <style>
+
 .card-area{
   position: relative;
   text-align: center;
 }
 .empName{
+font-family:  'Tajawal', sans-serif !important;
 position: absolute;
   top: 80%;
   /*left: 35%;*/
