@@ -6,53 +6,27 @@
    </div>
 </div>
 <div class="mt-4">
-    <button type="button" class="btn btn-secondary btn-lg" @click="generate_card()">تــحميــل</button>
+    <button type="button" class="btn btn-secondary btn-lg" @click="generateCard()">تــحميــل</button>
 </div>
 </template>
 <script>
-// import domtoimage from 'dom-to-image';
-import * as htmlToImage from 'html-to-image';
-import { toPng, toJpeg, toBlob, toPixelData, toSvg } from 'html-to-image';
-import domtoimage from "dom-to-image-more";
-import copyImageToClipboard from "copy-image-clipboard"
-import { saveAs } from 'file-saver';
 import html2canvas from 'html2canvas';
-// import * from 'downloadjs'
 export default {
   name: 'GentreatedCard',
   props:{
     empName:String,
   },
    methods:{
-
-
-generate_card (){
-htmlToImage.toJpeg(document.getElementById('card-area'), { quality: 0.95 })
-  .then(function (dataUrl) {
-    var link = document.createElement('a');
-    link.download = 'my-card.jpeg';
-    link.href = dataUrl;
-    link.click();
-  });
-
-//     htmlToImage.toPng(document.getElementById('card-area'), { quality: 10})
-//   .then(function (dataUrl) {
-//     download(dataUrl, 'my-node.png');
-//   });
-
-
-
-
-// domtoimage.toJpeg(document.getElementById("card-area"), { quality: 10})
-//     .then(function (dataUrl) {
-//         var link = document.createElement('a');
-//         link.download = 'my-image-name.jpeg';
-//         link.href = dataUrl;
-//         link.click();
-//     });
-// domtoimage.toBlob(document.getElementById("card-area"), {quality: 0.95, width:802, height: 1200}).then(function (blob) {
-//   window.saveAs(blob, "my-card.png");
-// });
+      async generateCard() {
+        const canvas = await html2canvas(document.getElementById("card-area"));
+        canvas.style.display = "none";
+        document.body.appendChild(canvas);
+        const image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        const a = document.createElement("a");
+        a.setAttribute("download", `collegeidcard.png`);
+        a.setAttribute("href", image);
+        a.click();
+      }
 
 }
 
@@ -62,7 +36,7 @@ htmlToImage.toJpeg(document.getElementById('card-area'), { quality: 0.95 })
     
    }
    
-}
+
 
 
 </script>
