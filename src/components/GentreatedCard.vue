@@ -1,6 +1,6 @@
 <template>
 <div class="card-area" id="card-area" >
-   <img src="../assets/card.png" alt="" width="350" height="450" class="d-inline-block pt-n5">
+   <img src="../assets/card.png" alt="" width="400" height="600" class="d-inline-block pt-n5">
    <div class="empName">
        {{ empName }}
    </div>
@@ -11,6 +11,8 @@
 </template>
 <script>
 import html2canvas from 'html2canvas';
+
+
 export default {
   name: 'GentreatedCard',
   props:{
@@ -23,9 +25,14 @@ export default {
         document.body.appendChild(canvas);
         const image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
         const a = document.createElement("a");
-        a.setAttribute("download", `collegeidcard.png`);
+
+
+
+
+        a.setAttribute("download", `my-ksrnr-card.png`);
         a.setAttribute("href", image);
         a.click();
+
       }
 
 }
@@ -45,11 +52,15 @@ export default {
 .card-area{
   position: relative;
   text-align: center;
+  width: 400px;
+  height:600px;
 }
 .empName{
 font-family:  'Tajawal', sans-serif !important;
+font-size: 20px;
+
 position: absolute;
-  top: 80%;
+  top: 80.5%;
   /*left: 35%;*/
   width: 100%;
 
